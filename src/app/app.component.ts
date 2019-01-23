@@ -17,18 +17,26 @@ export class AppComponent {
       ['Watch TV', 2],
       ['Sleep',    7]
     ],
-    options: {'title': 'Tasks'},
+    options: {
+      'title': 'Tasks',
+      'width': 750,
+      'height': 400,
+},
   };
+
+  randomNumber() {
+    return Math.floor(Math.random() * 11)
+  }
 
 
   changeData() {
     this.data.dataTable = [
       ['Task', 'Hours Per Day'],
-      ['Work',     8],
-      ['Eat',      2],
-      ['Commute',  2],
-      ['Watch TV', 5],
-      ['Sleep',    7]
+      ['Work',     this.randomNumber()],
+      ['Eat',      this.randomNumber()],
+      ['Commute',  this.randomNumber()],
+      ['Watch TV', this.randomNumber()],
+      ['Sleep',    this.randomNumber()]
     ]
     console.log(this.data);
   }
