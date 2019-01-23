@@ -1,7 +1,6 @@
-<google-chart [data]="data"></google-chart>
+<ngx-charts-pie-chart [results]="data" [view]="view"></ngx-charts-pie-chart>
 
-
-<h1>
-  {{data.dataTable}}
-</h1>
+<ul>
+  <li *ngFor="let datum of data"><em>{{datum.name}}:</em> {{datum.value}} </li>
+</ul>
 

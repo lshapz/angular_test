@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ButtonComponent } from './button/button.component';
 import { ChartComponent } from './chart/chart.component';
-import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,8 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
   ],
   imports: [
     BrowserModule,
-    Ng2GoogleChartsModule
+    NgxChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

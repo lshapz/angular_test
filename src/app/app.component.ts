@@ -7,37 +7,50 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  data =  {
-    chartType: 'PieChart',
-    dataTable: [
-      ['Task', 'Hours Per Day'],
-      ['Work',     11],
-      ['Eat',      2],
-      ['Commute',  2],
-      ['Watch TV', 2],
-      ['Sleep',    7]
-    ],
-    options: {
-      'title': 'Tasks',
-      'width': 750,
-      'height': 400,
-},
-  };
+  data = [
+      {
+        'name': 'Germany',
+        'value': 40632
+      },
+      {
+        'name': 'United States',
+        'value': 49737
+      },
+      {
+        'name': 'France',
+        'value': 36745
+      },
+      {
+        'name': 'United Kingdom',
+        'value': 36240
+      },
+      {
+        'name': 'Spain',
+        'value': 33000
+      },
+      {
+        'name': 'Italy',
+        'value': 35800
+      }
+    ];
+  foobar = 'baz';
 
   randomNumber() {
-    return Math.floor(Math.random() * 11)
+    return Math.floor(Math.random() * 50000)
   }
 
 
   changeData() {
-    this.data.dataTable = [
-      ['Task', 'Hours Per Day'],
-      ['Work',     this.randomNumber()],
-      ['Eat',      this.randomNumber()],
-      ['Commute',  this.randomNumber()],
-      ['Watch TV', this.randomNumber()],
-      ['Sleep',    this.randomNumber()]
-    ]
+
+    const newData = this.data.map(item => {
+       item.value = this.randomNumber();
+       return item;
+    });
+
+    this.foobar = 'bing';
+
+    this.data = [...newData];
+
     console.log(this.data);
   }
 }
