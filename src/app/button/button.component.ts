@@ -7,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
 
-  @Output() onChangeData = new EventEmitter<string>();
+  @Output() changeData = new EventEmitter<string>();
 
   constructor() { }
 
@@ -16,7 +16,7 @@ export class ButtonComponent implements OnInit {
 
 
   onClick(){
-    this.onChangeData.emit();
+    this.changeData.emit();
   }
 
 }
