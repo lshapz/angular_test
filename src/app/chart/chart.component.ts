@@ -8,7 +8,6 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 export class ChartComponent implements OnChanges, OnInit {
 
   @Input() data: [{name: string, value: number}];
-  @Input() foobar: string;
   view: any[] = [500, 500];
 
   constructor() { }

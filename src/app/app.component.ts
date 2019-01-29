@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
   data = [
       {
         'name': 'Germany',
@@ -33,7 +32,6 @@ export class AppComponent {
         'value': 35800
       }
     ];
-  foobar = 'baz';
 
   randomNumber() {
     return Math.floor(Math.random() * 40000) + 10000;
@@ -44,8 +42,6 @@ export class AppComponent {
        item.value = this.randomNumber();
        return item;
     });
-
-    this.foobar = 'bing';
 
     this.data = [...newData];
 
