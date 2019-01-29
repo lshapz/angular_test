@@ -21,6 +21,8 @@
     "@angular/router": "~7.2.0",
     "@swimlane/ngx-charts": "^10.0.0",
     "core-js": "^2.5.4",
+    "d3": "^5.8.0",
+    "jquery": "^3.3.1",
     "jscatalyst": "^1.2.41",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
