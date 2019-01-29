@@ -1,4 +1,9 @@
 
-<app-button (changeData)="changeData()"></app-button>
-<app-chart [data]="data" [foobar]="foobar"></app-chart>
-<vue-chart [pieData]="data"></vue-chart>
+<div class="flexbox-container">
+  <app-button (changeData)="changeData()"></app-button>
+  <app-vue-chart [data]="data"></app-vue-chart>
+  <app-chart [data]="data" [foobar]="foobar"></app-chart>
+  <ul>
+    <li *ngFor="let datum of data"><em>{{datum.name}}:</em> {{datum.value}} </li>
+  </ul>
+</div>

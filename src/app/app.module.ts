@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { ButtonComponent } from './button/button.component';
 import { ChartComponent } from './chart/chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { VueChartComponent } from './vue-chart/vue-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonComponent,
-    ChartComponent
+    ChartComponent,
+    VueChartComponent
   ],
   imports: [
     BrowserModule,
