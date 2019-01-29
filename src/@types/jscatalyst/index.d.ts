@@ -1,10 +1,6 @@
-declare module 'jscatalyst' {
-  import { Component, PluginObject, PluginFunction} from 'vue'
-  const D3PieChart: Component
-  const ThemePlugin: PluginObject<void>
-  export { ThemePlugin }
-  export interface ThemePlugin {
-    install: PluginFunction<void>
+ declare module 'jscatalyst' {
+    import _Vue, {PluginObject, Component} from 'vue'
+    const ThemePlugin: PluginObject<void>;
+    const D3PieChart: Component;
+    export {ThemePlugin, D3PieChart}
   }
-  export { D3PieChart };
-}
