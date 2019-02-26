@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewContainerRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as d3 from 'd3';
-import $ from 'jquery';
 
 @Component({
   selector: 'app-view-container',
@@ -9,7 +8,6 @@ import $ from 'jquery';
 })
 export class ViewContainerComponent implements OnInit, OnChanges  {
   @Input() data: [{name: string, value: number}];
-  propID = 'foobar';
   yAxisLabel = 'y';
   xAxisLabel = 'x';
   xAxisAngle = 45;
@@ -27,17 +25,22 @@ export class ViewContainerComponent implements OnInit, OnChanges  {
    return this.viewContainerRef.element.nativeElement;
   }
 
+  get propID() {
+    return this.viewContainerRef.element.nativeElement.children[1].children[0].id;
+  }
+
   ngOnInit() {
-    this.drawBarPlot(this.dataModel, this.propID, this.yAxisLabel, this.xAxisLabel, this.mouseover_callback);
-
+    this.drawChart();
     console.log(this.viewContainerRef);
-    // d3.select(this.elem).select("ul").style("background-color", "yellow");
-
   }
+
   ngOnChanges(changes: SimpleChanges) {
+    this.drawChart();
+  }
+
+  drawChart() {
     this.drawBarPlot(this.dataModel, this.propID, this.yAxisLabel, this.xAxisLabel, this.mouseover_callback);
   }
-
   mouseover_callback(x) {
       return x;
   }
@@ -48,10 +51,10 @@ export class ViewContainerComponent implements OnInit, OnChanges  {
         // const selection_string = "#" + id;
         const alt = d3.select(localThis.elem).select('svg');
         if (!!alt._groups[0][0]) {
-          alt.remove()
+          alt.remove();
         }
-
-        const element2 = d3.select(localThis.elem).select('#foobar')._groups[0][0];
+        const propIDString = "#" + this.propID;
+        const element2 = d3.select(localThis.elem).select(propIDString)._groups[0][0];
         const margin = { top: 20, right: 30, bottom: 15, left: 40 };
         if (this.xAxisAngle > 0) {
           margin.bottom += (this.xAxisAngle / 2);

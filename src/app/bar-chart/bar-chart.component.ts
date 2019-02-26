@@ -9,7 +9,7 @@ import $ from 'jquery';
 })
 export class BarChartComponent implements OnInit, OnChanges {
   @Input() data: [{name: string, value: number}];
-  propID = 'foobar';
+  propID = 'fob';
   yAxisLabel = 'y';
   xAxisLabel = 'x';
   xAxisAngle = 45;
