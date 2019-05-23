@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterViewInit} from '@angular/core';
 import * as d3 from 'd3';
 import $ from 'jquery';
 
@@ -7,7 +7,7 @@ import $ from 'jquery';
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.css']
 })
-export class BarChartComponent implements OnInit, OnChanges {
+export class BarChartComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() data: [{name: string, value: number}];
   propID = 'fob';
   yAxisLabel = 'y';
@@ -24,6 +24,9 @@ export class BarChartComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    this.drawBarPlot(this.dataModel, this.propID, this.yAxisLabel, this.xAxisLabel, this.mouseover_callback);
+  }
+  ngAfterViewInit() {
     this.drawBarPlot(this.dataModel, this.propID, this.yAxisLabel, this.xAxisLabel, this.mouseover_callback);
   }
 

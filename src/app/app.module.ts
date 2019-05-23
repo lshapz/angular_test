@@ -8,6 +8,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { VueChartComponent } from './vue-chart/vue-chart.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { ViewContainerComponent } from './view-container/view-container.component';
+import { LinePlotComponent } from './line-plot/line-plot.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ViewContainerComponent } from './view-container/view-container.componen
     ChartComponent,
     VueChartComponent,
     BarChartComponent,
-    ViewContainerComponent
+    ViewContainerComponent,
+    LinePlotComponent
   ],
   imports: [
     BrowserModule,
