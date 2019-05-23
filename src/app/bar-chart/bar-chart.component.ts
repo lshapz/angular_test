@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterViewInit} from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, AfterViewInit} from '@angular/core';
 import * as d3 from 'd3';
 import $ from 'jquery';
 
@@ -7,14 +7,13 @@ import $ from 'jquery';
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.css']
 })
-export class BarChartComponent implements OnInit, OnChanges, AfterViewInit {
+export class BarChartComponent implements OnChanges, AfterViewInit {
   @Input() data: [{name: string, value: number}];
-  propID = 'fob';
+  @Input() propID = 'fob';
   yAxisLabel = 'y';
   xAxisLabel = 'x';
   xAxisAngle = 45;
   yAxisAngle = 45;
-  // dataModel: [{x: string, y: number}];
   constructor() { }
 
   get dataModel() {
@@ -23,9 +22,6 @@ export class BarChartComponent implements OnInit, OnChanges, AfterViewInit {
     });
   }
 
-  ngOnInit() {
-    this.drawBarPlot(this.dataModel, this.propID, this.yAxisLabel, this.xAxisLabel, this.mouseover_callback);
-  }
   ngAfterViewInit() {
     this.drawBarPlot(this.dataModel, this.propID, this.yAxisLabel, this.xAxisLabel, this.mouseover_callback);
   }
@@ -41,9 +37,13 @@ export class BarChartComponent implements OnInit, OnChanges, AfterViewInit {
   drawBarPlot (data, id, yaxisvalue, xaxisvalue, mouseover_callback) {
         const localThis = this;
         d3.selectAll(`.${this.propID}_tooltip`).remove();
+        // const selection_string = "#" + id;
+        // if ($(selection_string + " svg") != null) {
+        //   $(selection_string + " svg").remove();
+        // }
         const selection_string = "#" + id;
-        if ($(selection_string + " svg") != null) {
-          $(selection_string + " svg").remove();
+        if (document.querySelectorAll(selection_string + " svg")[0] != null) {
+          document.querySelectorAll(selection_string + " svg")[0].remove();
         }
 
         const element = $(selection_string);
@@ -129,7 +129,6 @@ export class BarChartComponent implements OnInit, OnChanges, AfterViewInit {
               text.attr("x", dimensions.width - 10)
                   .attr("y", 0);
             }
-
         }
 
         chart

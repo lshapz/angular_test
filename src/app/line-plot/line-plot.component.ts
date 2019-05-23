@@ -41,9 +41,8 @@ export class LinePlotComponent implements OnInit, OnChanges, AfterViewInit {
     const localThis = this;
 
     d3.selectAll(`.${this.propID}_tooltip`).remove();
-
-    if ($(selection_string + " svg") != null) {
-      $(selection_string + " svg").remove();
+    if (document.querySelectorAll(selection_string + " svg")[0] != null) {
+      document.querySelectorAll(selection_string + " svg")[0].remove();
     }
     // make copy of the original data so we do not mutate it
     const data = [];
@@ -69,11 +68,19 @@ export class LinePlotComponent implements OnInit, OnChanges, AfterViewInit {
       }) <= 1
         ? true
         : false;
-    const element = $(selection_string);
+    let element: any;
+
+    let selected = document.querySelectorAll(selection_string);
+
+    if (selected[0] == null) {
+      element = [{clientWidth: 500, clientHeight: 500}];
+    } else {
+      element = selected[0];
+    }
 
     let margin = { top: 20, right: 30, bottom: 45, left: 40 },
-      width = $(element).width() - margin.left - margin.right,
-      height = $(element).height() - margin.top - margin.bottom;
+      width = element.clientWidth - margin.left - margin.right,
+      height = element.clientHeight - margin.top - margin.bottom;
 
     // Account for panel heading height if the title exists.
     if (this.title) {
@@ -176,7 +183,7 @@ export class LinePlotComponent implements OnInit, OnChanges, AfterViewInit {
     svg
       .append("rect")
       .attr("class", "pane")
-      .attr("width", element.width())
+      .attr("width", element.clientWidth)
       .attr("height", height)
       .attr("clip-path", "url(#" + clip_id + ")");
 

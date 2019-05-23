@@ -3,8 +3,10 @@
 <div class="flexbox-container">
 
   <app-line-plot [data]="dateData"></app-line-plot>
-  <!-- <app-button (changeData)="changeData()"></app-button> -->
-  <!-- <app-bar-chart [data]="data"></app-bar-chart> -->
+    <app-button (changeData)="changeDateData()" [buttonText]="buttonText"></app-button>
+
+  <app-button (changeData)="changeData()"></app-button>
+  <app-bar-chart [data]="data"></app-bar-chart>
   <!-- <app-vue-chart [data]="data"></app-vue-chart>
   <app-view-container [data]="data"> </app-view-container> -->
   <!-- <app-chart [data]="data"></app-chart> -->

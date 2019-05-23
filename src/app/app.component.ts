@@ -32,6 +32,7 @@ export class AppComponent {
         'value': 35800
       }
     ];
+    buttonText = "Randomize Dated Data";
   dateData = [
     {
       "date": "2017-06-01",
@@ -63,18 +64,25 @@ export class AppComponent {
     }
   ];
 
-  randomNumber() {
-    return Math.floor(Math.random() * 40000) + 10000;
+  randomNumber(min, max) {
+    return Math.floor(Math.random() * max) + min;
+  }
+
+  changeDateData() {
+    const newData = this.dateData.map(item => {
+      item.value = this.randomNumber(50, 350);
+      return item;
+    });
+    this.dateData = [...newData];
+    console.log(this.dateData);
   }
 
   changeData() {
     const newData = this.data.map(item => {
-       item.value = this.randomNumber();
+       item.value = this.randomNumber(10000, 40000);
        return item;
     });
-
     this.data = [...newData];
-
     console.log(this.data);
   }
 }
